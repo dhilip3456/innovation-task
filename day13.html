@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clean Code Example</title>
+</head>
+<body>
+    <script>
+        try {
+            // code that may throw an error
+        } catch (error) {
+            // code to handle the error
+        } finally {
+            // code that will always execute
+        }
+
+        try {
+            let atmpin = 2345;
+            if (atmpin === 1235) {
+                throw "incorrect pin";
+            }
+            console.log("logged in");
+        } catch (error) {
+            console.log("error: " + error);
+        } finally {
+            console.log("executed successfully");
+        }
+
+        // JSON parse() example
+        let str = '{"name":"js"}';
+        let parsedStr = JSON.parse(str);
+        console.log(parsedStr);  // { name: 'js' }
+
+        // JSON stringify() example
+        let obj = { id: "1" };
+        let stringifiedObj = JSON.stringify(obj);
+        console.log(stringifiedObj); // '{"id":"1"}'
+
+        // Properly formatted JSON object
+        let data = {
+            "person": [
+                { "id": "1", "name": "js" },
+                { "id": "2", "name": "js" }
+            ]
+        };
+
+        // Promise example (note uppercase P in Promise)
+        let sample = new Promise((resolve, reject) => {
+            let workIsDone = true;
+            if (workIsDone) {
+                resolve("completed");
+            } else {
+                reject("not yet");
+            }
+        });
+
+        sample
+            .then(message => {
+                console.log(message); // "completed"
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        // fetch() example
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Loop over the 'person' array inside the fetched data
+                for (let detail of data.person) {
+                    console.log(detail);
+                }
+            })
+            .catch(error => {
+                console.error("Fetch error: ", error);
+            });
+
+    </script>
+</body>
+</html>
